@@ -1,0 +1,18 @@
+:root {
+  --color-border: rgb(123, 0, 255);
+  --color-font: rgb(39, 0, 39);
+  --color-backgraund: rgb(235, 215, 250);
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(71, 82, 66);
+}

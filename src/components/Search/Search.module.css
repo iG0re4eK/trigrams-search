@@ -1,0 +1,35 @@
+.search-section {
+  position: relative;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  transition: 0.2s ease;
+  cursor: pointer;
+  border-radius: 4rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-backgraund);
+  color: var(--color-font);
+  padding: 0 10px;
+
+  &:hover {
+    background-color: var(--color-font);
+    color: var(--color-backgraund);
+  }
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 10rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-backgraund);
+  padding: 10px 20px;
+  color: var(--color-font);
+  transition: outline 0.1s ease;
+
+  &:focus {
+    outline: 2px solid var(--color-border);
+  }
+}

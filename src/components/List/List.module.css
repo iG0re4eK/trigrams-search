@@ -1,0 +1,14 @@
+.list {
+  width: 100%;
+  max-height: 60vh;
+  flex: 1;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-backgraund);
+  padding: 10px 20px;
+  color: var(--color-font);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: auto;
+}

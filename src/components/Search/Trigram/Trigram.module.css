@@ -1,0 +1,12 @@
+.trigram {
+  position: absolute;
+  top: 100%;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 200px;
+  overflow: auto;
+  width: 96%;
+  border-radius: 0 0 0.4rem 0.4rem;
+  background-color: var(--color-backgraund);
+}
