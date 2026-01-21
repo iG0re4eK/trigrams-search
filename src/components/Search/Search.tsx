@@ -1,20 +1,10 @@
 import { useState, type ChangeEvent } from "react";
 import styles from "./Search.module.css";
 import Trigram from "./Trigram/Trigram";
-
-interface Fio {
-  firstName: string;
-  middleName: string;
-  secondName: string;
-}
-
-interface User {
-  id: number;
-  fio: Fio;
-}
+import type { UserType } from "../../type/UserType";
 
 interface SearchProps {
-  users: User[];
+  users: UserType[];
   searchUser: (userName: string) => void;
   trigram: (text: string) => string[];
 }
