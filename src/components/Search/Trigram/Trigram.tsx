@@ -11,7 +11,7 @@ interface TrigramProps {
 
 function Trigram({ trigram, users, searchText, onSelect }: TrigramProps) {
   const comparison = (text: string | undefined, searchText: string) => {
-    if (!text || text.trim() === "") return false;
+    if (!text || text.trim() === "") return 0;
 
     const searchTextArray = trigram(searchText.toLowerCase());
     const textArray = trigram(text.toLowerCase());
@@ -25,20 +25,32 @@ function Trigram({ trigram, users, searchText, onSelect }: TrigramProps) {
       }
     }
 
-    return (count * 100) / searchTextArray.length > 0.5;
+    return count / searchTextArray.length;
   };
 
   const getMatchingUsersArray = () => {
-    const matchUsers: Record<string, number> = {};
+    const matchUsers: Record<
+      string,
+      {
+        count: number;
+        percent: number;
+        exactMatch?: boolean;
+      }
+    > = {};
 
     users.forEach((user) => {
       const fioValues = Object.values(user.fio);
       fioValues.forEach((name) => {
-        if (comparison(name, searchText)) {
-          if (matchUsers[name]) {
-            matchUsers[name]++;
+        const percent = comparison(name, searchText);
+        if (percent > 0.5) {
+          if (!matchUsers[name]) {
+            matchUsers[name] = {
+              count: 1,
+              percent,
+              exactMatch: name.toLowerCase().includes(searchText.toLowerCase()),
+            };
           } else {
-            matchUsers[name] = 1;
+            matchUsers[name].count++;
           }
         }
       });
@@ -48,7 +60,18 @@ function Trigram({ trigram, users, searchText, onSelect }: TrigramProps) {
   };
 
   const matchingUsers = Object.entries(getMatchingUsersArray()).sort((a, b) => {
-    return b[1] - a[1];
+    if (a[1].exactMatch && !b[1].exactMatch) return -1;
+    if (!a[1].exactMatch && b[1].exactMatch) return 1;
+
+    if (b[1].percent !== a[1].percent) {
+      return b[1].percent - a[1].percent;
+    }
+
+    if (b[1].count !== a[1].count) {
+      return b[1].count - a[1].count;
+    }
+
+    return a[0].localeCompare(b[0]);
   });
   console.log(matchingUsers);
 
