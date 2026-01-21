@@ -1,9 +1,19 @@
-import type { UserType } from "../../type/UserType";
 import Item from "./Item/Item";
 import styles from "./List.module.css";
 
+interface Fio {
+  firstName: string;
+  middleName: string;
+  secondName: string;
+}
+
+interface User {
+  id: number;
+  fio: Fio;
+}
+
 interface ListProps {
-  users: UserType[];
+  users: User[];
   trigram: (text: string) => string[];
 }
 

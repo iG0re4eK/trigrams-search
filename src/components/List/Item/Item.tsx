@@ -1,8 +1,18 @@
-import type { UserType } from "../../../type/UserType";
 import styles from "./Item.module.css";
 
+interface Fio {
+  firstName: string;
+  middleName: string;
+  secondName: string;
+}
+
+interface User {
+  id: number;
+  fio: Fio;
+}
+
 interface ItemProps {
-  user: UserType;
+  user: User;
   trigram: (text: string) => string[];
 }
 

@@ -1,10 +1,20 @@
-import type { UserType } from "../../../type/UserType";
 import Variant from "./Variant/Variant";
 import styles from "./Trigram.module.css";
 
+interface Fio {
+  firstName: string;
+  middleName: string;
+  secondName: string;
+}
+
+interface User {
+  id: number;
+  fio: Fio;
+}
+
 interface TrigramProps {
   trigram: (text: string) => string[];
-  users: UserType[];
+  users: User[];
   searchText: string;
   onSelect: (text: string) => void;
 }

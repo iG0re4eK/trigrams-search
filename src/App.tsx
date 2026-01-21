@@ -2,10 +2,20 @@ import { useState } from "react";
 import "./App.css";
 import List from "./components/List/List";
 import Search from "./components/Search/Search";
-import type { UserType } from "./type/UserType";
+
+interface Fio {
+  firstName: string;
+  middleName: string;
+  secondName: string;
+}
+
+interface User {
+  id: number;
+  fio: Fio;
+}
 
 function App() {
-  const usersData: UserType[] = [
+  const usersData: User[] = [
     {
       id: 1,
       fio: { firstName: "Иван", middleName: "Петрович", secondName: "Сидоров" },
@@ -244,7 +254,7 @@ function App() {
     },
   ];
 
-  const [users, setUsers] = useState<UserType[]>(usersData);
+  const [users, setUsers] = useState<User[]>(usersData);
 
   const handleSearchUser = (userName: string) => {
     const lowercasedSearch = userName.toLowerCase();
